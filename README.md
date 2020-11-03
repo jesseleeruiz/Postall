@@ -1,6 +1,6 @@
 # Welcome to Postall
 
-![Postall Image]()
+![Postall Image](https://github.com/jesseleeruiz/Postall/blob/master/2.png)
 
 A postcard building app.
 
