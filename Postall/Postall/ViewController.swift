@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         generateManyColors()
         renderPostcard()
+        
+        colorSelection.dragDelegate = self
     }
     
     // MARK: - Methods
@@ -87,7 +89,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDragDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count
     }
@@ -99,5 +102,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 5
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let color = colors[indexPath.item]
+        let provider = NSItemProvider(object: color)
+        let item = UIDragItem(itemProvider: provider)
+        return [item]
     }
 }
