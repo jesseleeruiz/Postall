@@ -1,8 +1,8 @@
-# Welcome to Placs
+# Welcome to Postall
 
-![Placs Image](https://github.com/jesseleeruiz/Placs/blob/master/PlacsLogo.png)
+![Postall Image]()
 
-A tvOS app giving you the ability to look up interesting places to visit.
+A postcard building app.
 
 ## Tech Stack 🤓
 UIKit | tvOS | MapKit | Core Location | REST API |
