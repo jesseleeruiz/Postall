@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class ViewController: UIViewController {
     
@@ -120,5 +121,27 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
         return UIDropProposal(operation: .copy)
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        let location = session.location(in: postcard)
+        
+        if session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String]) {
+            // Handle strings
+        } else if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]) {
+            // Handle Images
+            
+        } else {
+            session.loadObjects(ofClass: UIColor.self) { items in
+                guard let color = items.first as? UIColor else { return }
+                
+                if location.y < self.postcard.bounds.midY {
+                    self.topColor = color
+                } else {
+                    self.bottomColor = color
+                }
+                self.renderPostcard()
+            }
+        }
     }
 }
