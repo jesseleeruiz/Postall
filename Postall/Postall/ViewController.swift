@@ -127,7 +127,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let location = session.location(in: postcard)
         
         if session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String]) {
-            // Handle strings
+            session.loadObjects(ofClass: NSString.self) { items in
+                guard let string = items.first as? String else { return }
+                
+                if location.y < self.postcard.bounds.midY {
+                    self.topFontName = string
+                } else {
+                    self.bottomFontName = string
+                }
+                self.renderPostcard()
+            }
         } else if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]) {
             // Handle Images
             
