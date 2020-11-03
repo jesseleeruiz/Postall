@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         generateManyColors()
         renderPostcard()
+        configureDropInteraction()
         
         colorSelection.dragDelegate = self
     }
@@ -89,7 +90,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDragDelegate {
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count
@@ -109,5 +110,15 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let provider = NSItemProvider(object: color)
         let item = UIDragItem(itemProvider: provider)
         return [item]
+    }
+    
+    func configureDropInteraction() {
+        postcard.isUserInteractionEnabled = true
+        let dropInteraction = UIDropInteraction(delegate: self)
+        postcard.addInteraction(dropInteraction)
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+        return UIDropProposal(operation: .copy)
     }
 }
