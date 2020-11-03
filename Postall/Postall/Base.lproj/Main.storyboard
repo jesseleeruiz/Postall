@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="b6B-C9-Kii" customClass="ViewController" customModule="Postall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eNQ-l8-xQb">
-                        <rect key="frame" x="0.0" y="0.0" width="791.5" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="791" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="drO-3X-C7N">
@@ -47,9 +47,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="d61-Sj-Tku">
                                 <rect key="frame" x="20" y="51" width="752" height="724"/>
                                 <color key="tintColor" systemColor="systemGray3Color"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="d61-Sj-Tku" secondAttribute="height" multiplier="0.8:1" constant="170.79999999999995" id="wfK-Xu-XJa"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8YD-t4-aR9" appends="YES" id="nhx-PK-OuB"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zga-95-cDZ"/>
@@ -73,6 +77,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfF-Ft-Ldl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8YD-t4-aR9">
+                    <connections>
+                        <action selector="changeText:" destination="b6B-C9-Kii" id="QGc-9n-Ul4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="669.06474820143887" y="385.61151079136692"/>
         </scene>

@@ -89,6 +89,50 @@ class ViewController: UIViewController {
             bottomText.draw(in: bottomTextRect, withAttributes: bottomTextAttributes)
         }
     }
+    
+    // MARK: - IBActions
+    @IBAction func changeText(_ sender: UITapGestureRecognizer) {
+        // Find where the user tapped
+        let location = sender.location(in: postcard)
+        
+        // Decide whether they want to edit the top or bottom
+        let changeTop: Bool
+        if location.y < postcard.bounds.midY {
+            changeTop = true
+        } else {
+            changeTop = false
+        }
+        
+        // Create an alert controller with a text field
+        let alertController = UIAlertController(title: "Change text",
+                                                message: nil,
+                                                preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Write what you want to say"
+            
+            if changeTop {
+                textField.text = self.topText
+            } else {
+                textField.text = self.bottomText
+            }
+        }
+        
+        // Add a "Change" button that updates the correct property
+        alertController.addAction(UIAlertAction(title: "Change", style: .default) { _ in
+            guard let text = alertController.textFields?[0].text else { return }
+            
+            if changeTop {
+                self.topText = text
+            } else {
+                self.bottomText = text
+            }
+            self.renderPostcard()
+        })
+        // Add a cancel button too
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alertController, animated: true)
+    }
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDragDelegate, UIDropInteractionDelegate {
