@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class FontsViewController: UITableViewController {
     
@@ -15,6 +16,7 @@ class FontsViewController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dragDelegate = self
     }
     
     // MARK: - Methods
@@ -29,5 +31,15 @@ class FontsViewController: UITableViewController {
         cell.textLabel?.text = fontName
         cell.textLabel?.font = UIFont(name: fontName, size: 18)
         return cell
+    }
+}
+
+extension FontsViewController: UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let string = fonts[indexPath.row]
+        guard let data = string.data(using: .utf8) else { return [] }
+        
+        let itemProvider = NSItemProvider(item: data as NSData, typeIdentifier: kUTTypePlainText as String)
+        return [UIDragItem(itemProvider: itemProvider)]
     }
 }
