@@ -15,6 +15,7 @@
 		80BF1DF22550D5F90050C7F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BF1DF02550D5F90050C7F4 /* LaunchScreen.storyboard */; };
 		80BF1DFD2550D5FA0050C7F4 /* PostallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF1DFC2550D5FA0050C7F4 /* PostallTests.swift */; };
 		80BF1E082550D5FA0050C7F4 /* PostallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF1E072550D5FA0050C7F4 /* PostallUITests.swift */; };
+		80BF1E192550D6540050C7F4 /* FontsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF1E182550D6540050C7F4 /* FontsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		80BF1E032550D5FA0050C7F4 /* PostallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BF1E072550D5FA0050C7F4 /* PostallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostallUITests.swift; sourceTree = "<group>"; };
 		80BF1E092550D5FA0050C7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80BF1E182550D6540050C7F4 /* FontsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				80BF1DEE2550D5F90050C7F4 /* Assets.xcassets */,
 				80BF1DF02550D5F90050C7F4 /* LaunchScreen.storyboard */,
 				80BF1DF32550D5F90050C7F4 /* Info.plist */,
+				80BF1E182550D6540050C7F4 /* FontsViewController.swift */,
 			);
 			path = Postall;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BF1DEA2550D5F50050C7F4 /* ViewController.swift in Sources */,
+				80BF1E192550D6540050C7F4 /* FontsViewController.swift in Sources */,
 				80BF1DE62550D5F50050C7F4 /* AppDelegate.swift in Sources */,
 				80BF1DE82550D5F50050C7F4 /* SceneDelegate.swift in Sources */,
 			);
