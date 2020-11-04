@@ -32,8 +32,11 @@ class ViewController: UIViewController {
         generateManyColors()
         renderPostcard()
         configureDropInteraction()
+        configureDragInteraction()
         
         colorSelection.dragDelegate = self
+        title = "Edit Postcard"
+        splitViewController?.view.backgroundColor = UIColor.lightGray
     }
     
     // MARK: - Methods
@@ -157,7 +160,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         return [item]
     }
     
-    func configureDropInteraction() {
+    private func configureDropInteraction() {
         postcard.isUserInteractionEnabled = true
         let dropInteraction = UIDropInteraction(delegate: self)
         postcard.addInteraction(dropInteraction)
@@ -200,5 +203,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
                 self.renderPostcard()
             }
         }
+    }
+}
+
+extension ViewController: UIDragInteractionDelegate {
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        guard let image = postcard.image else { return [] }
+        
+        let provider = NSItemProvider(object: image)
+        let item = UIDragItem(itemProvider: provider)
+        return [item]
+    }
+    
+    private func configureDragInteraction() {
+        let dragInteraction = UIDragInteraction(delegate: self)
+        postcard.addInteraction(dragInteraction)
     }
 }
