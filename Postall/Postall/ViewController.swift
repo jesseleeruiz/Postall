@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     var colors = [UIColor]()
     var image: UIImage?
     
-    var topText = "Visit London"
+    var topText = "This is a Title"
     var topFontName = "Helvetica Neue"
     var topColor = UIColor.white
     
-    var bottomText = "Home of Sherlock Holmes, Paddington Bear, and James Bond"
+    var bottomText = "This is a Description"
     var bottomFontName = "Helvetica Neue"
     var bottomColor = UIColor.white
     
@@ -182,8 +182,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
                 self.renderPostcard()
             }
         } else if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]) {
-            // Handle Images
-            
+            session.loadObjects(ofClass: UIImage.self) { items in
+                guard let draggedImage = items.first as? UIImage else { return }
+                
+                self.image = draggedImage
+                self.renderPostcard()
+            }
         } else {
             session.loadObjects(ofClass: UIColor.self) { items in
                 guard let color = items.first as? UIColor else { return }
